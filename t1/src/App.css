@@ -1,0 +1,22 @@
+.sinal{
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 6px;
+  
+}
+
+.flex-component{
+  display: inline-block;
+  padding: 9px;
+  background-color: rgb(7, 7, 14);
+}
+
+.desligado{
+  opacity: 0.5;
+}
+
+.ligado{
+  opacity: 1;
+}
