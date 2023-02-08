@@ -17,8 +17,8 @@ import { useEffect } from 'react';
 
 export default function LoginForm() {
   const [formdata,setformdata] = useState({
-    email: 'ab',
-    password: 'password123'
+    email: '',
+    password: ''
   })
   const [error,seterror] = useState();
   const [isDisable,setisDisable] = useState(false)
@@ -38,6 +38,9 @@ export default function LoginForm() {
   const buttonDisable = () =>{
     setisDisable(() => true);
   }
+  useEffect(() =>{
+    console.log("email" + formdata.email + "password" + formdata.password);
+  },[formdata])
   return (
     <div className='wrapper'>
       <div className='login-form'>
@@ -49,21 +52,20 @@ export default function LoginForm() {
         
         <div className='row'>
           <label htmlFor={'email'}>Email</label>
-          <input id={'email'} type={'email'} autoComplete='off' />
+          <input id={'email'} type={'email'} autoComplete='off' onChange={(e) => setformdata({...formdata,email: e.target.value})} />
         </div>
         <div className='row'>
           <label htmlFor={'password'}>Password</label>
-          <input id={'password'} type={'password'} />
+          <input id={'password'} type={'password'} onChange={(e) => setformdata({...formdata,password: e.target.value})}/>
         </div>
-      {formdata.email && formdata.password.length >= 6 && isDisable === false?
+      
         <div className='button'>
           
-          <button onClick={handlesubmit} >Login</button>
+          <button onClick={handlesubmit} disabled={formdata.email === '' || formdata.password.length < 6 && isDisable === true}>Login</button>
         </div>
-        :
-        ""
+        
 
-      }
+      
       </div>
     </div>
   );
